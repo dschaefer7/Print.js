@@ -4,8 +4,8 @@ export default {
   print: (params, printFrame) => {
     // Format pdf url
     params.printable = params.printable.indexOf('http') !== -1
-        ? params.printable
-        : window.location.origin + (params.printable.charAt(0) !== '/' ? '/' + params.printable : params.printable)
+      ? params.printable
+      : window.location.origin + (params.printable.charAt(0) !== '/' ? '/' + params.printable : params.printable)
 
     // If showing a loading modal or using a hook function, we will preload the pdf file
     if (params.showModal || params.onLoadingStart) {
@@ -26,6 +26,7 @@ export default {
       })
 
       req.open('GET', params.printable, true)
+      req.setRequestHeader('Authorization', 'Bearer ' + params.token)
       req.send()
     } else {
       send(params, printFrame)

@@ -30,6 +30,7 @@ export interface Configuration {
     css?: string | string[];
     style?: string;
     scanStyles?: boolean;
+    token?: string;
 }
 
 declare var printJS: (params: string | Configuration) => void;
